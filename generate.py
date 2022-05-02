@@ -2,10 +2,7 @@
 from prettytable import PrettyTable
 from dataclasses import dataclass
 from textwrap import dedent
-from datetime import (
-    datetime,
-    date
-)
+from datetime import datetime, date
 import pandas as pd
 from typing import (
     List,
@@ -125,7 +122,15 @@ if __name__ == "__main__":
         """
             )
         )
-        htmlfile.write(table.get_html_string())
+
+        htmlfile.write(
+            table.get_html_string(
+                attributes={
+                    "border": 1,
+                    "style": "border-width: 1px; border-collapse: collapse;",
+                }
+            )
+        )
 
         now = datetime.utcnow()
 
