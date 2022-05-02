@@ -1,0 +1,25 @@
+name: Github Pages
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 */4 * * *'
+
+jobs:
+
+  pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: cachix/install-nix-action@v17
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+    - uses: actions/checkout@v3.0.1
+    - name: Run build
+      run: nix-shell --run 'python3 generate.py'
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
