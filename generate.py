@@ -128,7 +128,7 @@ if __name__ == "__main__":
                 """
           <hr />
           <div>
-            <p>This data is also available as <a href="./flight.csv">CSV</a>.</p>
+            <p>This data is also available as <a href="./flights.csv">CSV</a>.</p>
             <p>Generator managed at <a href="https://github.com/adisbladis/hk-flight-data">https://github.com/adisbladis/hk-flight-data</a>.</p>
           </div>
           </body>
