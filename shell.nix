@@ -4,6 +4,7 @@ let
 
   poetryEnv = pkgs.poetry2nix.mkPoetryEnv {
     projectDir = ./.;
+    preferWheels = true;
     overrides = pkgs.poetry2nix.overrides.withDefaults(self: super: {
 
       pandas = super.pandas.overridePythonAttrs(old: {
