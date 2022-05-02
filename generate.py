@@ -2,7 +2,10 @@
 from prettytable import PrettyTable
 from dataclasses import dataclass
 from textwrap import dedent
-from datetime import date
+from datetime import (
+    datetime,
+    date
+)
 import pandas as pd
 from typing import (
     List,
@@ -123,13 +126,17 @@ if __name__ == "__main__":
             )
         )
         htmlfile.write(table.get_html_string())
+
+        now = datetime.utcnow()
+
         htmlfile.write(
             dedent(
-                """
+                f"""
           <hr />
           <div>
             <p>This data is also available as <a href="./flights.csv">CSV</a>.</p>
             <p>Generator managed at <a href="https://github.com/adisbladis/hk-flight-data">https://github.com/adisbladis/hk-flight-data</a>.</p>
+            <p style="font-size: 80%;"><i>Updated on {now.isoformat()}(UTC)</i></p>
           </div>
           </body>
         </html>
